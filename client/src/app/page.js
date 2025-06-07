@@ -25,7 +25,10 @@ function Home() {
           <CardDescription>Enter your password to access the dashboard</CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={() => handleLogin(password)} className="space-y-4">
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            handleLogin(password)
+          }} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
               <Input
@@ -42,8 +45,8 @@ function Home() {
                 <AlertDescription>{error}</AlertDescription>
               </Alert>
             )}
-            <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? "Signing in..." : "Sign In"}
+            <Button type="submit" className="w-full cursor-pointer" disabled={isLoading}>
+              {isLoading ? <span className='loading loading-spinner '></span> : "Sign In"}
             </Button>
           </form>
         </CardContent>

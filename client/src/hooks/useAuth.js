@@ -2,20 +2,19 @@
 
 import { useAuthContext } from "@/providers/AuthProvider";
 import { useRouter } from "next/navigation";
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 export function useAuth() {
-    const [error, setError] = useState(null);
+    const [error, setError] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const { setIsLoggedIn } = useAuthContext();
     const router = useRouter();
     
     const handleLogin = (password) => {
         setIsLoading(true);
-        setError(null);
+        setError(false);
         //Hash password (Igore for now)
         //Send to server (Igore for now)
-
         if (!password.trim()) {
             setError("Password is required. Try again");
             setIsLoading(false);

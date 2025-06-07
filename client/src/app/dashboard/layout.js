@@ -1,7 +1,7 @@
+
 export default function Dashboardlayout({children}) {
     return(
-        <div>
-            Root layout
+        <div className="min-h-screen">
             {children}
         </div>
     )
