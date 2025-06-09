@@ -13,7 +13,11 @@ import { Alert, AlertDescription } from '@/components/ui/alert'
 function Home() {
   const [password, setPassword] = useState("");
   const {handleLogin, error, isLoading} = useAuth();
-
+  
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    await handleLogin(password)
+  } 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <Card className="w-full max-w-md">
@@ -25,10 +29,7 @@ function Home() {
           <CardDescription>Enter your password to access the dashboard</CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={(e) => {
-            e.preventDefault();
-            handleLogin(password)
-          }} className="space-y-4">
+          <form onSubmit={onSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
               <Input

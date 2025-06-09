@@ -1,6 +1,7 @@
 "use client";
 
 import { useAuthContext } from "@/providers/AuthProvider";
+import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -10,7 +11,9 @@ export function useAuth() {
     const { setIsLoggedIn } = useAuthContext();
     const router = useRouter();
     
-    const handleLogin = (password) => {
+    const LOGIN_API = process.env.NEXT_PUBLIC_API_LOGIN
+    console.log(LOGIN_API)
+    const handleLogin = async (password) => {
         setIsLoading(true);
         setError(false);
         //Hash password (Igore for now)
@@ -23,7 +26,12 @@ export function useAuth() {
 
         try {
             // Fake check — replace this with real password validation via fetch
-            const isValid = password === "password";
+            const result = axios.post(LOGIN_API, {
+                userPassword: password
+            })
+
+            console.log(result)
+            let isValid = false
             if (!isValid) {
                 setError("Incorrect password.");
             } else {
