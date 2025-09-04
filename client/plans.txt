@@ -1,0 +1,15 @@
+use:
+- Shadcn:
+    - Combobox
+    - Dropdown Menu
+    - Dialog
+    - Badge
+    - Alert dialog 
+    - Input
+    - Select
+    - Sidebar
+    - Skeleton
+    - Textarea
+    - Tabs
+    - Tooltip
+- Sonner Toasts
